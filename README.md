@@ -1,6 +1,6 @@
 # Cfd-CAM
 
-## Encoder Pretrain with Self-supervised methods
+## Encoder Pretrain with Self-supervised Methods
 ```
 cd ./model_phase/
 python3 pretrain_clnet.py -m t1 --method_type Supcon --model_type Res18
