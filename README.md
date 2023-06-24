@@ -1,5 +1,44 @@
-# Cfd-CAM
+# A Novel Confidence Induced Class Activation Mapping for MRI Brain Tumor Segmentation (Cfd-CAM) [Arxiv]
+Official code implementation for the Cfd-CAM paper published on [arxiv](https://arxiv.org/abs/2306.05476).
 
+This repository also include the implementation of [CAM](https://arxiv.org/abs/1512.04150) and [ScoreCAM](https://arxiv.org/abs/1910.01279).
+
+## Dataset
+[RSNA-ASNR-MICCAI Brain Tumor Segmentation (BraTS) Challenge 2021](http://braintumorsegmentation.org/)
+Download the official BraTS 2021 Dataset Task 1
+Preprocess the dataset from 3D volume data into 2D slide with the following script.
+```
+python3 gen_dataset.py -m t1 -d training/validate
+```
+
+Folder Structures for Dataset
+```
+DATASET_NAME
+|-- flair
+|   |-- training
+|   |   |-- normal
+|   |   |   |-- NORMAL_1.png
+|   |   |   |-- ...
+|   |   |-- seg
+|   |   |   |-- TUMOR_1.png
+|   |   |   |-- ...
+|   |   |-- tumor
+|   |   |   |-- TUMOR_1.jpg
+|   |   |   |-- ...
+|   |-- validate
+|   |   |-- normal
+|   |   |   |-- NORMAL_1.png
+|   |   |   |-- ...
+|   |   |-- seg
+|   |   |   |-- TUMOR_1.png
+|   |   |   |-- ...
+|   |   |-- tumor
+|   |   |   |-- TUMOR_1.jpg
+|   |   |   |-- ...
+|-- t1
+|-- t1ce
+|-- t2
+```
 ## Encoder Pretrain with Self-supervised Methods
 ```
 cd ./model_phase/
@@ -25,4 +64,15 @@ cd ./CAM_phase_ms_test_plus/
 python3 main.py --pretrained_path Res18_t1_ep10_b256.Supcon -m t1 -c CfdCAM
 python3 main.py --pretrained_path Res18_t1_ep10_b256.Supcon -m t1 -c CAM
 python3 main.py --pretrained_path Res18_t1_ep10_b256.Supcon -m t1 -c ScoreCAM
+```
+
+## Citation
+If you use the code or results in your research, please use the following BibTeX entry.
+```
+@article{chen2023novel,
+  title={A Novel Confidence Induced Class Activation Mapping for MRI Brain Tumor Segmentation},
+  author={Chen, Yu-Jen and Shi, Yiyu and Ho, Tsung-Yi},
+  journal={arXiv preprint arXiv:2306.05476},
+  year={2023}
+}
 ```
