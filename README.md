@@ -8,6 +8,7 @@ This repository also include the implementation of [CAM](https://arxiv.org/abs/1
 Download the official BraTS 2021 Dataset Task 1
 Preprocess the dataset from 3D volume data into 2D slide with the following script.
 ```
+cd ./src/
 python3 gen_dataset.py -m t1 -d training/validate
 ```
 
@@ -41,18 +42,18 @@ DATASET_NAME
 ```
 ## Encoder Pretrain with Self-supervised Methods
 ```
-cd ./model_phase/
+cd ./src/model_phase/
 python3 pretrain_clnet.py -m t1 --method_type Supcon --model_type Res18
 ```
 ## Train and Test Classifier with Pretrained Encoder
 ```
-cd ./model_phase/
+cd ./src/model_phase/
 python3 train_cnet.py -b 256 -m t1 --encoder_pretrained_path SimCLR/Res18_t1_ep100_b512
 python3 test_cnet.py -m t1 --pretrained_path Res18_t1_ep10_b256
 ```
 ## Run single-scale Cfd-CAM/CAM/ScoreCAM
 ```
-cd ./CAM_phase/
+cd ./src/CAM_phase/
 python3 main.py --pretrained_path Res18_t1_ep10_b256.Supcon -m t1 -c CfdCAM
 python3 main.py --pretrained_path Res18_t1_ep10_b256.Supcon -m t1 -c CAM
 python3 main.py --pretrained_path Res18_t1_ep10_b256.Supcon -m t1 -c ScoreCAM
@@ -60,7 +61,7 @@ python3 main.py --pretrained_path Res18_t1_ep10_b256.Supcon -m t1 -c ScoreCAM
 
 ## Run multi-scale Cfd-CAM/CAM/ScoreCAM
 ```
-cd ./CAM_phase_ms_test_plus/
+cd ./src/CAM_phase_ms_test_plus/
 python3 main.py --pretrained_path Res18_t1_ep10_b256.Supcon -m t1 -c CfdCAM
 python3 main.py --pretrained_path Res18_t1_ep10_b256.Supcon -m t1 -c CAM
 python3 main.py --pretrained_path Res18_t1_ep10_b256.Supcon -m t1 -c ScoreCAM
