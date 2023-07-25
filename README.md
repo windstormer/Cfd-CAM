@@ -5,9 +5,12 @@ This repository also include the implementation of [CAM](https://arxiv.org/abs/1
 
 ## Dataset
 [RSNA-ASNR-MICCAI Brain Tumor Segmentation (BraTS) Challenge 2021](http://braintumorsegmentation.org/)
-Download the official BraTS 2021 Dataset Task 1
+
+Download the official BraTS 2021 Dataset Task 1.
+
 Split the official training set into training and validation with the ratio 9:1.
-The case id for training and validation set are shown in dataset.txt.
+(The case id for training and validation set are shown in dataset.txt.)
+
 Preprocess the dataset from 3D volume data into 2D slide with the following script.
 ```
 cd ./src/
